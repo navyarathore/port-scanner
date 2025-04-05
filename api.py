@@ -1,10 +1,7 @@
 from flask import Flask, request, jsonify
 import uuid
 import threading
-import os
-import json
 import socket
-import scanner  # our CLI logic above turned into callable functions
 
 app = Flask(__name__)
 SCAN_RESULTS = {}
@@ -61,3 +58,6 @@ def get_result(scan_id):
     result = SCAN_RESULTS.get(scan_id, [])
     return jsonify(result)
 
+if __name__ == "__main__":
+    print("Starting Flask API server...")
+    app.run(debug=True, port=5000)
